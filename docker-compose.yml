@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  smi:
+    image: lampa/smi-rest:0.0.1
+    ports:
+      - 8176:8176
