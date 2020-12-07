@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SmiRest stats page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+<!-- Styles -->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .chart {
+        width: 33%;
+        float: left;
+        height: 25vh;
+    }
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/dataviz.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+    let charts = {};
+    fetch("/stats").then(response => response.json()).then(json => {
+        am4core.ready(function () {
+            am4core.useTheme(am4themes_animated);
+
+            for (let gpu in json) {
+                charts[gpu] = {};
+
+                for (let value in json[gpu]) {
+
+                    let div = document.createElement("div");
+                    div.className = "chart";
+                    document.body.appendChild(div);
+
+                    console.log(json[gpu][value].map(function (num, index, array) {
+                        return {
+                            date: new Date(new Date().getTime() - (array.length - index) * 1000),
+                            value: num
+                        }
+                    }));
+
+                    /*chart.data = json[gpu][value].map(function(num, index, array) {
+                        return {
+                            date: new Date(new Date().getTime() - (array.length - index) * 1000),
+                            value: num
+                        }
+                    });*/
+
+                    let chart = am4core.create(div, am4charts.XYChart);
+                    chart.hiddenState.properties.opacity = 0;
+
+                    chart.padding(10, 10, 10, 10);
+
+                    chart.zoomOutButton.disabled = true;
+
+                    let title = chart.titles.create();
+                    title.text = value;
+                    title.fontSize = 15;
+                    title.marginBottom = 10;
+
+                    chart.data = json[gpu][value].map(function (num, index, array) {
+                        return {
+                            date: new Date(new Date().getTime() - (array.length - index) * 1000),
+                            value: num
+                        }
+                    });
+
+                    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+                    dateAxis.renderer.grid.template.location = 0;
+                    //dateAxis.renderer.minGridDistance = 30;
+                    dateAxis.dateFormats.setKey("second", "ss");
+                    dateAxis.renderer.inside = true;
+                    dateAxis.renderer.axisFills.template.disabled = true;
+                    dateAxis.renderer.ticks.template.disabled = true;
+
+                    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                    valueAxis.tooltip.disabled = true;
+                    valueAxis.interpolationDuration = 500;
+                    valueAxis.rangeChangeDuration = 500;
+                    valueAxis.renderer.inside = true;
+                    valueAxis.renderer.minLabelPosition = 0.05;
+                    valueAxis.renderer.maxLabelPosition = 0.95;
+                    valueAxis.renderer.axisFills.template.disabled = true;
+                    valueAxis.renderer.ticks.template.disabled = true;
+
+                    let series = chart.series.push(new am4charts.LineSeries());
+                    series.dataFields.dateX = "date";
+                    series.dataFields.valueY = "value";
+                    series.interpolationDuration = 500;
+                    series.defaultState.transitionDuration = 0;
+                    series.tensionX = 0.8;
+
+                    chart.events.on("datavalidated", function () {
+                        dateAxis.zoom({start: 1 / 15, end: 1.2}, false, true);
+                    });
+
+                    dateAxis.interpolationDuration = 500;
+                    dateAxis.rangeChangeDuration = 500;
+
+                    series.fillOpacity = 1;
+                    let gradient = new am4core.LinearGradient();
+                    gradient.addColor(chart.colors.getIndex(0), 0.2);
+                    gradient.addColor(chart.colors.getIndex(0), 0);
+                    series.fill = gradient;
+
+                    dateAxis.renderer.labels.template.adapter.add("fillOpacity", function (fillOpacity, target) {
+                        let dataItem = target.dataItem;
+                        return dataItem.position;
+                    });
+
+                    dateAxis.events.on("validated", function () {
+                        am4core.iter.each(dateAxis.renderer.labels.iterator(), function (label) {
+                            label.fillOpacity = label.fillOpacity;
+                        })
+                    });
+
+                    dateAxis.renderer.labels.template.adapter.add("rotation", function (rotation, target) {
+                        let dataItem = target.dataItem;
+                        if (dataItem.date && dataItem.date.getTime() == am4core.time.round(new Date(dataItem.date.getTime()), "minute").getTime()) {
+                            target.verticalCenter = "middle";
+                            target.horizontalCenter = "left";
+                            return -90;
+                        } else {
+                            target.verticalCenter = "bottom";
+                            target.horizontalCenter = "middle";
+                            return 0;
+                        }
+                    });
+
+                    let bullet = series.createChild(am4charts.CircleBullet);
+                    bullet.circle.radius = 5;
+                    bullet.fillOpacity = 1;
+                    bullet.fill = chart.colors.getIndex(0);
+                    bullet.isMeasured = false;
+
+                    series.events.on("validated", function () {
+                        bullet.moveTo(series.dataItems.last.point);
+                        bullet.validatePosition();
+                    });
+
+                    charts[gpu][value] = chart;
+                }
+            }
+
+            setInterval(() => {
+                fetch("/stats").then(response => response.json()).then(json => {
+                    for (let gpu in json) {
+                        for (let value in json[gpu]) {
+                            charts[gpu][value].addData(
+                                {date: new Date(), value: json[gpu][value][json[gpu][value].length - 1]},
+                                1
+                            );
+                        }
+                    }
+                });
+            }, 1000)
+        });
+    });
+</script>
+
+
+</body>
+</html>
