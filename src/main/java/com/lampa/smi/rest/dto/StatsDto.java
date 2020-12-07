@@ -9,19 +9,21 @@ import java.util.Queue;
 @Getter
 public class StatsDto {
     // percent
-    protected Queue<Integer> gpu = null;
-    protected Queue<Integer> mem = null;
-    protected Queue<Integer> encoder = null;
-    protected Queue<Integer> decoder = null;
+    protected Queue<Integer> gpuPercent = null;
+    protected Queue<Integer> memPercent = null;
+    protected Queue<Integer> memValue = null;
+
+    // video
+    protected Queue<Integer> videoEncode = null;
+    protected Queue<Integer> videoDecode = null;
+    protected Queue<Integer> fps = null;
 
     // temps
     protected Queue<Integer> gpuTemp = null;
     protected Queue<Integer> memTemp = null;
+    protected Queue<Integer> fan = null;
 
     //
-    protected Queue<Integer> fan = null;
-    protected Queue<Integer> fps = null;
-
     protected Queue<Integer> graphicClock = null;
     protected Queue<Integer> videoClock = null;
     protected Queue<Integer> memClock = null;

@@ -29,10 +29,13 @@ public class StatsService {
 
             StatsDto stats = gpusStats.getOrDefault(uuid, new StatsDto(size));
 
-            stats.getGpu().add(Objects.requireNonNullElse(gpuType.getUtilization().getGpuUtil(), 0));
-            stats.getEncoder().add(Objects.requireNonNullElse(gpuType.getUtilization().getEncoderUtil(), 0));
-            stats.getDecoder().add(Objects.requireNonNullElse(gpuType.getUtilization().getDecoderUtil(), 0));
-            stats.getMem().add(Objects.requireNonNullElse(gpuType.getUtilization().getMemoryUtil(), 0));
+            stats.getGpuPercent().add(Objects.requireNonNullElse(gpuType.getUtilization().getGpuUtil(), 0));
+            stats.getMemPercent().add(Objects.requireNonNullElse(gpuType.getUtilization().getMemoryUtil(), 0));
+
+            stats.getVideoEncode().add(Objects.requireNonNullElse(gpuType.getUtilization().getEncoderUtil(), 0));
+            stats.getVideoDecode().add(Objects.requireNonNullElse(gpuType.getUtilization().getDecoderUtil(), 0));
+
+            stats.getMemValue().add(Objects.requireNonNullElse(gpuType.getFbMemoryUsage().getUsed(), 0));
 
             stats.getGpuTemp().add(Objects.requireNonNullElse(gpuType.getTemperature().getGpuTemp(), 0));
             stats.getMemTemp().add(Objects.requireNonNullElse(gpuType.getTemperature().getMemoryTemp(), 0));

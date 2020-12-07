@@ -47,8 +47,12 @@ public class FbMemoryUsageType {
      * @return possible object is
      * {@link String }
      */
-    public String getTotal() {
-        return total;
+    public Integer getTotal() {
+        try {
+            return Integer.valueOf(total.replace(" MiB", ""));
+        } catch (NumberFormatException ex) {
+            return null;
+        }
     }
 
     /**
@@ -67,8 +71,12 @@ public class FbMemoryUsageType {
      * @return possible object is
      * {@link String }
      */
-    public String getUsed() {
-        return used;
+    public Integer getUsed() {
+        try {
+            return Integer.valueOf(used.replace(" MiB", ""));
+        } catch (NumberFormatException ex) {
+            return null;
+        }
     }
 
     /**
@@ -87,8 +95,12 @@ public class FbMemoryUsageType {
      * @return possible object is
      * {@link String }
      */
-    public String getFree() {
-        return free;
+    public Integer getFree() {
+        try {
+            return Integer.valueOf(free.replace(" MiB", ""));
+        } catch (NumberFormatException ex) {
+            return null;
+        }
     }
 
     /**
