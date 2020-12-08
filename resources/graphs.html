@@ -109,8 +109,8 @@
 
                     series.fillOpacity = 1;
                     let gradient = new am4core.LinearGradient();
-                    gradient.addColor(chart.colors.getIndex(0), 0.2);
                     gradient.addColor(chart.colors.getIndex(0), 0);
+                    gradient.addColor(chart.colors.getIndex(0), 0.3);
                     series.fill = gradient;
 
                     dateAxis.renderer.labels.template.adapter.add("fillOpacity", function (fillOpacity, target) {

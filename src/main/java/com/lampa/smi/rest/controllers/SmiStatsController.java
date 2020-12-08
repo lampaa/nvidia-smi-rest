@@ -2,6 +2,7 @@ package com.lampa.smi.rest.controllers;
 
 import com.lampa.smi.rest.dto.StatsDto;
 import com.lampa.smi.rest.services.StatsService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,6 +33,7 @@ public class SmiStatsController {
     private Resource graphs;
 
     @GetMapping
+    @ApiResponse(description = "Get all gpu stats")
     private Map<String, StatsDto> getAll() {
         if (!enable) {
             throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "stats disabled");
@@ -40,7 +42,18 @@ public class SmiStatsController {
         return statsService.getStats();
     }
 
+    @GetMapping("{gpu_uuid}")
+    @ApiResponse(description = "Get stats by gpu")
+    private StatsDto getByGpuUuid(@PathVariable String gpu_uuid) {
+        if (!enable) {
+            throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "stats disabled");
+        }
+
+        return statsService.getStatsByGpuUuid(gpu_uuid);
+    }
+
     @GetMapping("graphs")
+    @ApiResponse(description = "Get HTML graphics")
     private ResponseEntity getGraphs() throws IOException {
         if (!enable) {
             throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "stats disabled");
@@ -50,14 +63,5 @@ public class SmiStatsController {
 
         httpHeaders.setContentLength(graphs.contentLength());
         return new ResponseEntity<>(graphs, httpHeaders, HttpStatus.OK);
-    }
-
-    @GetMapping("{uuid}")
-    private StatsDto getByGpuUuid(@PathVariable String uuid) {
-        if (!enable) {
-            throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "stats disabled");
-        }
-
-        return statsService.getStatsByGpuUuid(uuid);
     }
 }

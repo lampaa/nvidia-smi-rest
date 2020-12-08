@@ -3,6 +3,7 @@ package com.lampa.smi.rest.controllers;
 import com.lampa.smi.SmiReader;
 import com.lampa.smi.dtoV1.GpuType;
 import com.lampa.smi.dtoV1.NvidiaSmiLogType;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,15 +22,17 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping({"/v1", "/"}) // current api
+@RequestMapping({"/v1"}) // current api
 public class SmiRestV1Controller {
     @GetMapping
+    @ApiResponse(description = "Get all log")
     private NvidiaSmiLogType getAll() throws JAXBException, XMLStreamException {
         return SmiReader.fromSystem();
     }
 
-    @GetMapping("{gpu}/**")
-    private Object getByParams(@PathVariable String gpu, HttpServletRequest request) throws JAXBException, XMLStreamException, NoSuchFieldException, IllegalAccessException {
+    @GetMapping("{gpu_uuid}/**")
+    @ApiResponse(description = "Get log by gpu and fields")
+    private Object getByParams(@PathVariable String gpu_uuid, HttpServletRequest request) throws JAXBException, XMLStreamException, NoSuchFieldException, IllegalAccessException {
         String[] mvcPath = ((String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE)).split("/");
 
 
@@ -42,7 +45,7 @@ public class SmiRestV1Controller {
         NvidiaSmiLogType smiLog = SmiReader.fromSystem();
 
         for (GpuType gpuType : smiLog.getGpu()) {
-            if (gpuType.getUuid().equals(gpu)) {
+            if (gpuType.getUuid().equals(gpu_uuid)) {
                 return getFromObject(gpuType, fields);
             }
         }
