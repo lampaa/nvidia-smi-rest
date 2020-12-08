@@ -88,6 +88,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>resources</directory>
+            </resource>
+        </resources>
     </build>
 
 </project>
