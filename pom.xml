@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.lampa</groupId>
+    <groupId>com.github.lampaa</groupId>
     <artifactId>smirest</artifactId>
     <version>0.0.2</version>
     <name>SmiRest</name>

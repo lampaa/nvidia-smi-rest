@@ -33,7 +33,7 @@ Smi Rest - service for obtaining GPU data in a convenient format and collecting 
 **Maven dependency (not worked)**
 ```xml
 <dependency>
-    <groupId>com.lampa</groupId>
+    <groupId>com.github.lampaa</groupId>
     <artifactId>smirest</artifactId>
     <version>0.0.2</version>
 </dependency>
