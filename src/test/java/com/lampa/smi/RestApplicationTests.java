@@ -16,7 +16,7 @@ class RestApplicationTests {
     @Test
     public void readingTest() throws IOException, JAXBException, XMLStreamException {
         for (int i = 1; i < 8; i++) {
-            SmiReader.fromFile(new ClassPathResource("smi_test_" + i + ".xml").getFile());
+            SmiReader.read(new ClassPathResource("smi_test_" + i + ".xml").getFile());
             log.info("success read from file smi_test_{}.xml", i);
         }
     }

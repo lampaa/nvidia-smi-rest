@@ -27,7 +27,7 @@ public class SmiRestV1Controller {
     @GetMapping
     @ApiResponse(description = "Get all log")
     private NvidiaSmiLogType getAll() throws JAXBException, XMLStreamException {
-        return SmiReader.fromSystem();
+        return SmiReader.read();
     }
 
     @GetMapping("{gpu_uuid}/**")
@@ -42,7 +42,7 @@ public class SmiRestV1Controller {
             fields.add(mvcPath[i]);
         }
 
-        NvidiaSmiLogType smiLog = SmiReader.fromSystem();
+        NvidiaSmiLogType smiLog = SmiReader.read();
 
         for (GpuType gpuType : smiLog.getGpu()) {
             if (gpuType.getUuid().equals(gpu_uuid)) {

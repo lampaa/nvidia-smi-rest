@@ -33,12 +33,12 @@ public class SmiReader {
      * @throws JAXBException
      * @throws XMLStreamException
      */
-    public static NvidiaSmiLogType fromSystem() throws JAXBException, XMLStreamException {
+    public static NvidiaSmiLogType read() throws JAXBException, XMLStreamException {
         ProcResult procResult = new ProcBuilder("nvidia-smi", "--xml-format", "-q")
                 .withTimeoutMillis(TimeUnit.SECONDS.toMillis(1000))
                 .run();
 
-        return fromString(procResult.getOutputString());
+        return read(procResult.getOutputString());
     }
 
     /**
@@ -49,8 +49,8 @@ public class SmiReader {
      * @throws JAXBException
      * @throws XMLStreamException
      */
-    public static NvidiaSmiLogType fromInputStream(InputStream inputStream) throws JAXBException, XMLStreamException {
-        return fromReader(new InputStreamReader(inputStream));
+    public static NvidiaSmiLogType from(InputStream inputStream) throws JAXBException, XMLStreamException {
+        return read(new InputStreamReader(inputStream));
     }
 
     /**
@@ -62,8 +62,8 @@ public class SmiReader {
      * @throws JAXBException
      * @throws XMLStreamException
      */
-    public static NvidiaSmiLogType fromFile(File file) throws FileNotFoundException, JAXBException, XMLStreamException {
-        return fromReader(new FileReader(file));
+    public static NvidiaSmiLogType read(File file) throws FileNotFoundException, JAXBException, XMLStreamException {
+        return read(new FileReader(file));
     }
 
     /**
@@ -74,8 +74,8 @@ public class SmiReader {
      * @throws JAXBException
      * @throws XMLStreamException
      */
-    public static NvidiaSmiLogType fromString(String string) throws JAXBException, XMLStreamException {
-        return fromReader(new StringReader(string));
+    public static NvidiaSmiLogType read(String string) throws JAXBException, XMLStreamException {
+        return read(new StringReader(string));
     }
 
     /**
@@ -86,7 +86,7 @@ public class SmiReader {
      * @throws XMLStreamException
      * @throws JAXBException
      */
-    public static NvidiaSmiLogType fromReader(Reader reader) throws XMLStreamException, JAXBException {
+    public static NvidiaSmiLogType read(Reader reader) throws XMLStreamException, JAXBException {
         XMLStreamReader xsr = xif.createXMLStreamReader(reader);
 
         JAXBContext jc = JAXBContext.newInstance(NvidiaSmiLogType.class);

@@ -24,7 +24,7 @@ public class StatsService {
 
     @Scheduled(fixedDelayString = "${stats.interval}")
     private void scheduler() throws JAXBException, XMLStreamException {
-        for (GpuType gpuType : SmiReader.fromSystem().getGpu()) {
+        for (GpuType gpuType : SmiReader.read().getGpu()) {
             String uuid = gpuType.getUuid();
 
             StatsDto stats = gpusStats.getOrDefault(uuid, new StatsDto(size));

@@ -3,6 +3,6 @@ version: "3"
 services:
   smi:
     runtime: nvidia
-    image: lampa/smi-rest:0.0.1
+    image: lampa/smi-rest:0.0.2
     ports:
       - 8176:8176
