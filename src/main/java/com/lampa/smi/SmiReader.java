@@ -24,14 +24,12 @@ public class SmiReader {
         xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
     }
 
-    ;
-
     /**
      * read from system
      *
      * @return NvidiaSmiLogType
-     * @throws JAXBException
-     * @throws XMLStreamException
+     * @throws JAXBException error parse xml
+     * @throws XMLStreamException error reader
      */
     public static NvidiaSmiLogType read() throws JAXBException, XMLStreamException {
         ProcResult procResult = new ProcBuilder("nvidia-smi", "--xml-format", "-q")
@@ -46,10 +44,10 @@ public class SmiReader {
      *
      * @param inputStream InputStream
      * @return NvidiaSmiLogType
-     * @throws JAXBException
-     * @throws XMLStreamException
+     * @throws JAXBException error parse xml
+     * @throws XMLStreamException error reader
      */
-    public static NvidiaSmiLogType from(InputStream inputStream) throws JAXBException, XMLStreamException {
+    public static NvidiaSmiLogType read(InputStream inputStream) throws JAXBException, XMLStreamException {
         return read(new InputStreamReader(inputStream));
     }
 
@@ -59,8 +57,8 @@ public class SmiReader {
      * @param file File
      * @return NvidiaSmiLogType
      * @throws FileNotFoundException
-     * @throws JAXBException
-     * @throws XMLStreamException
+     * @throws JAXBException error parse xml
+     * @throws XMLStreamException error reader
      */
     public static NvidiaSmiLogType read(File file) throws FileNotFoundException, JAXBException, XMLStreamException {
         return read(new FileReader(file));
@@ -71,8 +69,8 @@ public class SmiReader {
      *
      * @param string xml
      * @return NvidiaSmiLogType
-     * @throws JAXBException
-     * @throws XMLStreamException
+     * @throws JAXBException error parse xml
+     * @throws XMLStreamException error reader
      */
     public static NvidiaSmiLogType read(String string) throws JAXBException, XMLStreamException {
         return read(new StringReader(string));
@@ -83,8 +81,8 @@ public class SmiReader {
      *
      * @param reader Reader
      * @return NvidiaSmiLogType
-     * @throws XMLStreamException
-     * @throws JAXBException
+     * @throws XMLStreamException error reader
+     * @throws JAXBException error parse xml
      */
     public static NvidiaSmiLogType read(Reader reader) throws XMLStreamException, JAXBException {
         XMLStreamReader xsr = xif.createXMLStreamReader(reader);

@@ -48,3 +48,9 @@ NvidiaSmiLogType smi = SmiReader.read(new FileInputStream("smi_log.xml")); // re
 NvidiaSmiLogType smi = SmiReader.read("<xml>...</xml>"); // from string
 NvidiaSmiLogType smi = SmiReader.read(new StringReader("<xml>...</xml>")); // from reader
 ``` 
+
+
+**Documentation**
+
+* Swagger http://lampaa.github.io/com.lampa.smirest/swagger/index.html
+* JavaDoc http://lampaa.github.io/com.lampa.smirest/docs/index.html
