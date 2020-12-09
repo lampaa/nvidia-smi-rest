@@ -4,16 +4,16 @@ Smi Rest - service for obtaining GPU data in a convenient format and collecting 
 
 **How to install?**
 
-1. Для Windows и Linux нужно установить драйвер nvidia https://www.nvidia.com/Download/index.aspx
-1. Для использования без контейнеризации установить Java 11 https://adoptopenjdk.net/
-1. Для использования с контейнеризацией установить docker, docker-compose https://docs.docker.com/get-docker/
-1. Для использования в Docker нужно установить NVIDIA Container Toolkit https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
+1. For Windows and Linux, needs to install the nvidia driver https://www.nvidia.com/Download/index.aspx
+1. For use without containerization, install Java 11 https://adoptopenjdk.net/
+1. For use with containerization, install docker, docker-compose https://docs.docker.com/get-docker/
+1. To use in Docker, you need to install the NVIDIA Container Toolkit https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
 
 **Without Docker**
 
 * Package project `maven package`
 * Or download release https://github.com/lampaa/nvidia-smi-rest/releases/latest  
-* Run 'java -jar smirest-0.0.2.jar'
+* Run `java -jar smirest-0.0.2.jar`
 
 **With Docker**
 
