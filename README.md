@@ -13,7 +13,7 @@ Smi Rest - service for obtaining GPU data in a convenient format and collecting 
 
 * Package project `maven package`
 * Or download release https://github.com/lampaa/nvidia-smi-rest/releases/latest  
-* Run 'java -jar smirest-0.0.2.jar'
+* Run `java -jar smirest-0.0.2.jar`
 
 **With Docker**
 
