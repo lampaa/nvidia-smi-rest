@@ -21,12 +21,12 @@ Smi Rest - service for obtaining GPU data in a convenient format and collecting 
 
 **REST API**
 
-* http://localhost:8169/v1 - get all log from gpu devices
-* http://localhost:8169/v1/GPU-UUID - get log from one gpu device
+* http://localhost:8176/v1 - get all log from gpu devices
+* http://localhost:8176/v1/GPU-UUID - get log from one gpu device
 * http://localhost:8176/v1/GPU-a9685d8a-fbf2-7465-ee1f-307141ef06a8/pci/pciGpuLinkInfo/pcieGen - get field from log one gpu device
-* http://localhost:8169/stats - get stats from all gpu devices
-* http://localhost:8169/stats/GPU-UUID - get stats from one gpu device
-* http://localhost:8169/stats/graphs - get stats graphics
+* http://localhost:8176/stats - get stats from all gpu devices
+* http://localhost:8176/stats/GPU-UUID - get stats from one gpu device
+* http://localhost:8176/stats/graphs - get stats graphics
 
 ![alt text](graphs.png)
 

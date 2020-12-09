@@ -21,12 +21,12 @@ Smi Rest - сервис для получения данных GPU в удобн
 
 **REST API**
 
-* http://localhost:8169/v1 - получить полный лог драйвера и устройств
-* http://localhost:8169/v1/GPU-UUID - получить полный лог устройства
+* http://localhost:8176/v1 - получить полный лог драйвера и устройств
+* http://localhost:8176/v1/GPU-UUID - получить полный лог устройства
 * http://localhost:8176/v1/GPU-a9685d8a-fbf2-7465-ee1f-307141ef06a8/pci/pciGpuLinkInfo/pcieGen - определенное поля лога устройства
-* http://localhost:8169/stats - получить полную статистику
-* http://localhost:8169/stats/GPU-UUID - получить статистику одного устройства
-* http://localhost:8169/stats/graphs - получить графики статистики
+* http://localhost:8176/stats - получить полную статистику
+* http://localhost:8176/stats/GPU-UUID - получить статистику одного устройства
+* http://localhost:8176/stats/graphs - получить графики статистики
 
 ![alt text](graphs.png)
 
