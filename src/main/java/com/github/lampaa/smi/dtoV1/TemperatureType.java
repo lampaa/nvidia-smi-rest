@@ -6,28 +6,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for temperatureType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="temperatureType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="gpu_temp" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu_temp_max_threshold" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu_temp_slow_threshold" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu_temp_max_gpu_threshold" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="memory_temp" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu_temp_max_mem_threshold" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "temperatureType", propOrder = {

@@ -8,22 +8,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for driver_modelType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="driver_modelType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="current_dm" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="pending_dm" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "driver_modelType", propOrder = {

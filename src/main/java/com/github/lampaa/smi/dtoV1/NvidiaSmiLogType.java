@@ -5,27 +5,8 @@ import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
-
 /**
- * <p>Java class for nvidia_smi_logType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="nvidia_smi_logType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="timestamp" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="driver_version" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="cuda_version" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="attached_gpus" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu" type="{}gpuType"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlRootElement(name = "nvidia_smi_log")
 @XmlAccessorType(XmlAccessType.FIELD)

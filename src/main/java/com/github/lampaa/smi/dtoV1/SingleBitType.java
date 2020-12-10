@@ -8,28 +8,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for single_bitType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="single_bitType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="device_memory" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="register_file" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="l1_cache" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="l2_cache" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="texture_memory" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="texture_shm" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="cbu" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="total" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "single_bitType", propOrder = {

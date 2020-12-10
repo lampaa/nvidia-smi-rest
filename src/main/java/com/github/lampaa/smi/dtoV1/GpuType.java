@@ -3,66 +3,8 @@ package com.github.lampaa.smi.dtoV1;
 
 import jakarta.xml.bind.annotation.*;
 
-
 /**
- * <p>Java class for gpuType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="gpuType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="product_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="product_brand" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="display_mode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="display_active" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="persistence_mode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accounting_mode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accounting_mode_buffer_size" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="driver_model" type="{}driver_modelType"/>
- *         &lt;element name="serial" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="uuid" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="minor_number" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="vbios_version" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="multigpu_board" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="board_id" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="gpu_part_number" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="inforom_version" type="{}inforom_versionType"/>
- *         &lt;element name="gpu_operation_mode" type="{}gpu_operation_modeType"/>
- *         &lt;element name="gpu_virtualization_mode" type="{}gpu_virtualization_modeType"/>
- *         &lt;element name="ibmnpu" type="{}ibmnpuType"/>
- *         &lt;element name="pci" type="{}pciType"/>
- *         &lt;element name="fan_speed" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="performance_state" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="clocks_throttle_reasons" type="{}clocks_throttle_reasonsType"/>
- *         &lt;element name="fb_memory_usage" type="{}fb_memory_usageType"/>
- *         &lt;element name="bar1_memory_usage" type="{}bar1_memory_usageType"/>
- *         &lt;element name="compute_mode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="utilization" type="{}utilizationType"/>
- *         &lt;element name="encoder_stats" type="{}encoder_statsType"/>
- *         &lt;element name="fbc_stats" type="{}fbc_statsType"/>
- *         &lt;element name="ecc_mode" type="{}ecc_modeType"/>
- *         &lt;element name="ecc_errors" type="{}ecc_errorsType"/>
- *         &lt;element name="retired_pages" type="{}retired_pagesType"/>
- *         &lt;element name="temperature" type="{}temperatureType"/>
- *         &lt;element name="power_readings" type="{}power_readingsType"/>
- *         &lt;element name="clocks" type="{}clocksType"/>
- *         &lt;element name="applications_clocks" type="{}applications_clocksType"/>
- *         &lt;element name="default_applications_clocks" type="{}default_applications_clocksType"/>
- *         &lt;element name="max_clocks" type="{}max_clocksType"/>
- *         &lt;element name="max_customer_boost_clocks" type="{}max_customer_boost_clocksType"/>
- *         &lt;element name="clock_policy" type="{}clock_policyType"/>
- *         &lt;element name="supported_clocks" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="processes" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accounted_processes" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "gpuType", propOrder = {

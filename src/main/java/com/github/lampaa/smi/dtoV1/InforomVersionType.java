@@ -6,26 +6,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for inforom_versionType complex type.
  *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="inforom_versionType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="img_version" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="oem_object" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ecc_object" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="pwr_object" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "inforom_versionType", propOrder = {
